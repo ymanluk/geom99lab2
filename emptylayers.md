@@ -1,5 +1,5 @@
 # ArcGIS Online Developers: Create a new empty layer
-## URL 1: Developers Details Item Page:
+## URL 1: Developers Details Item Page
 ```
 https://developers.arcgis.com/layers/88d9b482aad54c8eb7f4638e14bfa1b2/
 ```
