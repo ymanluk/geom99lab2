@@ -1,0 +1,311 @@
+<!-- Tutorials enhanced:
+Search for an address https://developers.arcgis.com/javascript/latest/tutorials/search-for-an-address/
+Add a point, line, and polyline https://developers.arcgis.com/javascript/latest/tutorials/add-a-point-line-and-polygon/ 
+Reference: inspiration from ChatGPT for story content-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Search for Love</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+  <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/widgets/Search"
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Search) {
+
+      esriConfig.apiKey = "AAPK5b4904cdbfe9434d8ea442d6d25a86bcGSh57y7u3oQJNuc2IoqIbR8ECGeKHsA_yzBPVGdIZSc4jQYKa1xJo3nNvUud57QI";
+
+      const map = new Map({
+        basemap: "arcgis/topographic" // basemap styles service
+      });
+
+      const view = new MapView({
+        map: map,
+        center: [-118.80500, 34.02700], // Longitude, latitude
+        zoom: 13,
+        container: "viewDiv"
+      });
+
+
+
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+
+
+
+      const simpleFillSymbol = {
+        type: "simple-fill",
+        color: [227, 139, 79, 0.3], // Orange, opacity 80%
+        outline: {
+          color: [255, 255, 255],
+          width: 1
+        }
+      };
+
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      };
+      
+	  const simpleMarkerSymbol = {
+        type: "simple-marker",
+        color: "#8080FF", 
+		size: "16px",
+        outline: {
+          color: [255, 255, 255], 
+          width: 0.5
+        }
+      };
+
+      // Adding the points
+      
+	  const attributes1 = {
+        Name: "Game: Search for Love",
+        Description: "How to play: Using clues and the search bar, search for your love! Clue: Where is Fleming College Frost Campus?"
+      };
+	  
+	  const point1 = {
+        type: "point",
+        longitude: -118.80657463861,
+        latitude: 34.0005930608889
+      };
+	  
+
+      const pointGraphic1 = new Graphic({
+        geometry: point1,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes1,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic1);
+	  
+	  
+	  const attributes2 = {
+        Name: "The Invitation",
+        Description: "Your girlfriend broke up with you last month since you are always busy as a GIS student. One day, you received an invitation to a journey of Love starting at the Eiffel Tower."
+      };
+	  
+	  const point2 = {
+        type: "point",
+        longitude: -78.742196,
+        latitude: 44.341258
+      };
+      
+
+      const pointGraphic2 = new Graphic({
+        geometry: point2,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes2,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic2);
+	  
+	  
+
+	  const attributes3 = {
+        Name: "Paris",
+        Description: "Here you find the blooming garden near the Eiffel Tower. You remember your ex-girlfriend loves cherry blossoms in Kyoto. But you would like to see the Canals in Venice, Italy rather than visiting Japan."
+      };
+	  
+	  const point3 = {
+        type: "point",
+        longitude: 2.296361,
+        latitude: 48.855923
+      };
+      
+
+      const pointGraphic3 = new Graphic({
+        geometry: point3,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes3,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic3);
+
+
+	  const attributes4 = {
+        Name: "Grand Canal",
+        Description: "You reach the romantic canals of Venice in Italy. Here, you met a woman who always wanted to visit the statue of Jesus Christ in Rio de Janeiro."
+      };
+	  
+	  const point4 = {
+        type: "point",
+        longitude: 12.327802,
+        latitude: 45.434887
+      };
+      
+
+      const pointGraphic4 = new Graphic({
+        geometry: point4,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes4,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic4);
+
+
+
+	  const attributes5 = {
+        Name: "Rio de Janeiro, Brazil",
+        Description: "Your new friend shows you around Rio de Janeiro, as you find yourself on its vibrant streets, dancing under the night sky. As you share heartfelt conversations with this lovely friend, you discovered that you both wanted to visit Santorini on Thira Island."
+      };
+	  
+	  const point5 = {
+        type: "point",
+        longitude: -43.210914,
+        latitude: -22.952569
+      };
+      
+
+      const pointGraphic5 = new Graphic({
+        geometry: point5,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes5,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic5);
+
+
+	  const attributes6 = {
+        Name: "Final Choice",
+        Description: "Finally, you both arrive at the picturesque island of Santorini. You suddenly remember you have a midterm tomorrow but she is asking you to stay. What will you choose? Choice 'Get Back and Study': in the search box enter '-79.623, 43.673'; Choice 'Declare Everlasting Love': in the search box enter '15.383, 43.978'"
+      };
+	  
+	  const point6 = {
+        type: "point",
+        longitude: 25.438255,
+        latitude: 36.366504
+      };
+      
+
+      const pointGraphic6 = new Graphic({
+        geometry: point6,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes6,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic6);
+
+      
+	  const attributes7 = {
+        Name: "Ending: Happy Valentine's Day!!!",
+        Description: "All the way from Paris, Venice, Rio de Janeiro to Greece, you have found your love and beautiful memories. Happy Valentine's Day!! The end~"
+      };
+	  
+	  const point7 = {
+        type: "point",
+        longitude: 15.383227,
+        latitude: 43.977914
+      };
+      
+
+      const pointGraphic7 = new Graphic({
+        geometry: point7,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes7,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic7);
+	  
+	  
+	  const attributes8 = {
+        Name: "Ending: Lonely Valentine",
+        Description: "At the last moment, you decided that your study and career matter more than romantic love. That is why you landed at the airport before riding carpool back to Lindsay as currently there is no public transport between Toronto and Lindsay. You hope you have made the right decision to focus on your studies, climbing up the social ladder and ultimately having better chances to get to know the woman of your life. Until then, this is a lonely Valentine's Day for you. The end~ (Retry for other endings!)"
+      };
+	  
+	  const point8 = {
+        type: "point",
+        longitude: -79.622,
+        latitude: 43.673 
+      };
+      
+
+      const pointGraphic8 = new Graphic({
+        geometry: point8,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes8,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic8);
+	  
+	  
+	  const attributes9 = {
+        Name: "Another chance?",
+        Description: "The cherry blossoms in Kyoto gardens are mesmorizing. As you take a stroll, you see your ex girlfriend far away but she does not see you. What do you do? Choice: 'Approach her': enter '-79.381, 43.638' in the search box; Choice: 'Do not approach her': enter '-79.623, 43.673' in the search box"
+      };
+	  
+	  const point9 = {
+        type: "point",
+        longitude: 135.762,
+        latitude: 34.989 
+      };
+      
+
+      const pointGraphic9 = new Graphic({
+        geometry: point9,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes9,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic9);
+	  
+	  
+	  
+	  const attributes10 = {
+        Name: "Ending: Love is Everything",
+        Description: "It turned out that she still has feelings for you and you promised to give up your GIS dream to stay with her more often. Walking down the Toronto Harbourfront with her on Valentine's Day, you wonder if you have made the right decision... The end~ (Retry for other endings!)"
+      };
+	  
+	  const point10 = {
+        type: "point",
+        longitude: -79.382,
+        latitude: 43.638
+      };
+      
+
+      const pointGraphic10 = new Graphic({
+        geometry: point10,
+        symbol: simpleMarkerSymbol,
+        attributes: attributes10,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic10);
+	  
+	  
+	  
+
+      // Adding Search functionality
+      const search = new Search({
+        view: view
+      });
+      view.ui.add(search, "top-right");
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
