@@ -19,7 +19,23 @@ Reference: inspiration from ChatGPT for story content-->
       margin: 0;
       height: 100%;
       width: 100%;
+	  text-align: center;
     }
+	
+	button {
+		padding: 10px 20px; 
+		margin: 0 auto 20px;
+		font-size: 16px;
+		background-color: #1E90FF;
+		color: #fff; 
+		border: none; 
+		cursor: pointer;
+    }
+
+    button:hover {
+      background-color: "
+    }
+	
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.28/"></script>
@@ -301,10 +317,28 @@ Reference: inspiration from ChatGPT for story content-->
       view.ui.add(search, "top-right");
 
     });
+  
+	// Added how to play description and button to make it disappear
+	function hideElements() {
+      // Get references to the heading, description and button
+      var heading = document.getElementById('heading');
+      var button = document.getElementById('hideButton');
+	  var desc = document.getElementById('desc');
+
+      // Hide the heading, description and button
+      heading.style.display = 'none';
+	  desc.style.display = 'none';
+      button.style.display = 'none';
+    }
+  
+  
   </script>
 </head>
 
 <body>
+	<h1 id="heading"> Search For Love </h1> 
+	<p id="desc"> How to play: click on the point on the map for instructions and search for the locations using the search box! </p>
+	<button id="hideButton" onclick="hideElements()">Got it!</button>
   <div id="viewDiv"></div>
 </body>
 
